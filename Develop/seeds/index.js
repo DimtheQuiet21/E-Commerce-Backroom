@@ -4,14 +4,21 @@ const seedTags = require('./tag-seeds');
 const seedProductTags = require('./product-tag-seeds');
 
 const sequelize = require('../config/connection');
+const { Category } = require('../models');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedCategories();
+
   console.log('\n----- CATEGORIES SEEDED -----\n');
 
-  await seedProducts();
+ const products =  await seedProducts();
+  // for (const { id } of products) {
+  //   const newCategory = await Category.create({
+  //     category_id: id,
+  //   });
+  // }
   console.log('\n----- PRODUCTS SEEDED -----\n');
 
   await seedTags();
