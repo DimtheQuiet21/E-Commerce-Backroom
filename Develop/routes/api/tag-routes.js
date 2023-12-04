@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try{
     const userData = await Tag.findAll({
-      //include: [{ model: Product }],
+      include: [{ model: Product }],
     });
     if (!userData) {
       res.status(404).json({ message: 'No user with this id!' });
