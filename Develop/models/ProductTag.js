@@ -36,7 +36,7 @@ ProductTag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_tag',
+    modelName: 'product_tag', //THIS is what you call to summon the model.
   }
 );
 
